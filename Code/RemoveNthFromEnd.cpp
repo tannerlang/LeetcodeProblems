@@ -23,22 +23,18 @@ class Solution
     ListNode* removeNthFromEnd(ListNode* head, int n) 
     {   
         ListNode* dummy = new ListNode(0,head);     //make a dummy pointing to head
-        ListNode* fast = dummy;
+        ListNode* fast = head;
         ListNode* beforeN = dummy;
         
 
-        if (head->next == nullptr && n ==1) //if head only has one node and n = 1 return immedietely.
+        if (head->next == nullptr && n == 1) //if head only has one node and n = 1 return immedietely.
         {
             return nullptr;
         }
         
-        //move fast n+1 steps ahead
-        for (int i = 0; i <= n; i++)
+        //move fast n steps ahead
+        for (int i = 0; i < n; i++)
         {
-            if (fast == nullptr)
-            {
-                return head;
-            }
             fast = fast->next;
         }
 
@@ -56,9 +52,7 @@ class Solution
         delete temp;
        
 
-        ListNode* newHead = dummy->next;        //for edgecase
-        delete dummy;
-        return newHead;
+        return dummy->next;
         
     }
 };
