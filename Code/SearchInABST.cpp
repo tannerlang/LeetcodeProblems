@@ -13,43 +13,31 @@ Find the node in the BST that the node's value equals val and return the subtree
 
 //bfs
 
-#include<queue>
+
 using namespace std;
 class Solution {
     public:
         TreeNode* searchBST(TreeNode* root, int val) 
         {
-            queue<TreeNode*> q;
-            q.push(root);
-            int check = val;
-
-            if (!root)
-            {
-                return nullptr;
-            }
-            
-            
-            while (!q.empty())
-            {
-                TreeNode* curr = q.front();
-                q.pop();
-
-                
-                if (curr->val == check)
-                {
-                    return curr;
-                }
-                if(curr->left)
-                {
-                    q.push(curr->left);
-                }
-                if(curr->right)
-                {
-                    q.push(curr->right);
-                }
-            }
-            //if we never find it
+         if (!root)
+         {
             return nullptr;
-     
+         }
+
+         if (val == root->val)
+         {
+            return root;
+         }
+
+         if (val < root->val)
+         {
+            return searchBST(root->left, val);
+         }
+         if (val > root->val)
+         {
+            return searchBST(root->right, val);
+         }
+
+         return nullptr;     
         }
     };

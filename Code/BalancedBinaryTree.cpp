@@ -49,7 +49,7 @@ struct TreeNode {
         return -1;
       }
 
-      return max(leftHeight,rightHeight) + 1;
+      return std::max(leftHeight,rightHeight) + 1;
     }
 };
 
